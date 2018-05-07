@@ -5,6 +5,7 @@ project 'Everything Rick and Morty.xcodeproj'
 target 'Everything Rick and Morty' do
   use_frameworks!
   pod 'Moya', '~> 11.0'
+  pod 'SDWebImage', '~> 4.0'
 
   # Pods for Everything Rick and Morty
 

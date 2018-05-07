@@ -13,6 +13,11 @@ struct CharacterResponse: Decodable {
     let results: [Character]
 }
 
+struct CharacterLocation: Decodable {
+    let name: String
+    let url: String
+}
+
 struct Character: Decodable {
     let id: Int
     let name: String

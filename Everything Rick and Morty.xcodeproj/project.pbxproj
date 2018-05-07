@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7EB451C18F01497E2ADB3F36 /* RickAndMortyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB45BE028C30E41FD8CA961 /* RickAndMortyAPI.swift */; };
 		7EB4549C4D7F6C36C9B77CE5 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4596B6CC7BE9F7F1781AC /* Info.swift */; };
+		7EB455B3889191878E996AF2 /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB453C2182713BE32CFAC27 /* Networkable.swift */; };
+		7EB45B13848C292D48F1A6E3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB45DAB6866E6B0F6A67548 /* NetworkManager.swift */; };
 		7F5877D7209F55AA0061A29B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877D6209F55AA0061A29B /* AppDelegate.swift */; };
 		7F5877D9209F55AA0061A29B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877D8209F55AA0061A29B /* CharacterListViewController.swift */; };
 		7F5877DB209F55AA0061A29B /* EpisodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877DA209F55AA0061A29B /* EpisodeListViewController.swift */; };
@@ -21,6 +23,7 @@
 		7F58780E209F5C900061A29B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F58780D209F5C900061A29B /* Character.swift */; };
 		7F587810209F64EA0061A29B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F58780F209F64EA0061A29B /* Location.swift */; };
 		7F587812209F65D00061A29B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F587811209F65D00061A29B /* Episode.swift */; };
+		7F58781420A05AED0061A29B /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F58781320A05AED0061A29B /* CharacterTableViewCell.swift */; };
 		87AC6447CC61BB538F29D937 /* Pods_Everything_Rick_and_MortyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04A4B104823590327AE9889 /* Pods_Everything_Rick_and_MortyTests.framework */; };
 		C0E6DE486D7378148EE3A7AB /* Pods_Everything_Rick_and_Morty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EF83E0A1206F0B45925038 /* Pods_Everything_Rick_and_Morty.framework */; };
 		E8BD30FFDF3132A306D2E130 /* Pods_Everything_Rick_and_MortyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDA40994D524B66173BFC91 /* Pods_Everything_Rick_and_MortyUITests.framework */; };
@@ -49,8 +52,10 @@
 		0797110E7FE9FF2E3AB94E9B /* Pods-Everything Rick and MortyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everything Rick and MortyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Everything Rick and MortyTests/Pods-Everything Rick and MortyTests.release.xcconfig"; sourceTree = "<group>"; };
 		10EF83E0A1206F0B45925038 /* Pods_Everything_Rick_and_Morty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everything_Rick_and_Morty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7FB22B0003CC6E8C425014 /* Pods-Everything Rick and MortyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everything Rick and MortyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everything Rick and MortyUITests/Pods-Everything Rick and MortyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7EB453C2182713BE32CFAC27 /* Networkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
 		7EB4596B6CC7BE9F7F1781AC /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		7EB45BE028C30E41FD8CA961 /* RickAndMortyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RickAndMortyAPI.swift; sourceTree = "<group>"; };
+		7EB45DAB6866E6B0F6A67548 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7F5877D3209F55AA0061A29B /* Everything Rick and Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Everything Rick and Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5877D6209F55AA0061A29B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5877D8209F55AA0061A29B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 		7F58780D209F5C900061A29B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		7F58780F209F64EA0061A29B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		7F587811209F65D00061A29B /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		7F58781320A05AED0061A29B /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		A04A4B104823590327AE9889 /* Pods_Everything_Rick_and_MortyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Everything_Rick_and_MortyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9FC28A094C794986508743D /* Pods-Everything Rick and MortyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everything Rick and MortyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everything Rick and MortyTests/Pods-Everything Rick and MortyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C36ED23E3B66E3A46DACE3F9 /* Pods-Everything Rick and Morty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Everything Rick and Morty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Everything Rick and Morty/Pods-Everything Rick and Morty.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,6 +200,7 @@
 		7F58780A209F59020061A29B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7F58781320A05AED0061A29B /* CharacterTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,6 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				7EB45BE028C30E41FD8CA961 /* RickAndMortyAPI.swift */,
+				7EB453C2182713BE32CFAC27 /* Networkable.swift */,
+				7EB45DAB6866E6B0F6A67548 /* NetworkManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -375,12 +384,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -532,6 +543,9 @@
 				7F5877D9209F55AA0061A29B /* CharacterListViewController.swift in Sources */,
 				7EB4549C4D7F6C36C9B77CE5 /* Info.swift in Sources */,
 				7EB451C18F01497E2ADB3F36 /* RickAndMortyAPI.swift in Sources */,
+				7EB455B3889191878E996AF2 /* Networkable.swift in Sources */,
+				7EB45B13848C292D48F1A6E3 /* NetworkManager.swift in Sources */,
+				7F58781420A05AED0061A29B /* CharacterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
