@@ -8,7 +8,12 @@ import Moya
 
 protocol Networkable {
     var provider: MoyaProvider<RickAndMortyAPI> { get }
-    func getCharacter(completion: @escaping ([Character]) -> Void)
+    func getCharacter(name: String,
+                      status: String,
+                      species: String,
+                      type: String,
+                      page: String,
+                      completion: @escaping ([Character], Info) -> Void)
     func getLocation(completion: @escaping ([Location]) -> Void)
     func getEpisode(completion: @escaping ([Episode]) -> Void)
 }

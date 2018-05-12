@@ -11,13 +11,19 @@ struct NetworkManager: Networkable {
 
     var provider = MoyaProvider<RickAndMortyAPI>()
 
-    func getCharacter(completion: @escaping ([Character]) -> Void) {
-        provider.request(.character(name: "", status: "", species: "", type: "", gender: "")) { result in
+    func getCharacter(name: String,
+                      status: String,
+                      species: String,
+                      type: String,
+                      page: String,
+                      completion: @escaping ([Character], Info) -> Void) {
+
+        provider.request(.character(name: name, status: status, species: species, type: type, page: page), completion: { result in
             switch result {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode(CharacterResponse.self, from: response.data)
-                    completion(results.results)
+                    completion(results.results, results.info)
 
                 }
                 catch let error {
@@ -27,7 +33,7 @@ struct NetworkManager: Networkable {
                 print(error.localizedDescription)
 
             }
-        }
+        })
     }
 
     func getLocation(completion: @escaping ([Location]) -> Void) {

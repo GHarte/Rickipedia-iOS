@@ -8,7 +8,7 @@ import Moya
 import Alamofire
 
 enum RickAndMortyAPI {
-    case character(name: String, status: String, species: String, type: String, gender: String)
+    case character(name: String, status: String, species: String, type: String, page: String)
     case location(name: String, type: String, dimension: String)
     case episode(name: String, episode: String)
 }
@@ -44,14 +44,14 @@ extension RickAndMortyAPI: TargetType {
     }
     var task: Task {
         switch self {
-        case .character(let name, let status, let species, let type, let gender):
+        case .character(let name, let status, let species, let type, let page):
             return .requestParameters(
                     parameters: [
                         "name": name,
                         "status": status,
                         "species": species,
                         "type": type,
-                        "gender": gender
+                        "page": page
                     ],
                     encoding: URLEncoding.queryString)
 

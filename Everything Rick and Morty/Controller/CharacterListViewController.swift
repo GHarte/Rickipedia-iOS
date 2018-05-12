@@ -11,16 +11,66 @@ import UIKit
 class CharacterListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-
+    @IBOutlet var currentPageLabel: UILabel!
+    
     let networkManager = NetworkManager()
-    var characters = [Character]()
+    var characters = [Character]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var info: Info? {
+        didSet {
+            currentPageLabel.text = info?.currentPage()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        networkManager.getCharacter { characters in
+        navigationController?.view.backgroundColor = .mainBackgroundColor
+        makeCharacterRequest(name: "", status: "", species: "", type: "", page: "")
+
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "toCharacterDetailVC" {
+            if let characterDetailVC = segue.destination as? CharacterDetailViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    characterDetailVC.character = characters[indexPath.row]
+                }
+            }
+        }
+    }
+
+    func makeCharacterRequest(name: String, status: String, species: String, type: String, page: String) {
+        networkManager.getCharacter(name: name, status: status, species: species, type: type, page: page) { characters, info in
             self.characters = characters
-            self.tableView.reloadData()
+            self.info = info
+        }
+    }
+
+    @IBAction func previousButtonPressed(_ sender: UIButton) {
+
+        guard let previous = info?.previousPage() else {
+            return
+        }
+
+        if previous != "" {
+            makeCharacterRequest(name: "", status: "", species: "", type: "", page: previous)
+        }
+
+    }
+
+    @IBAction func nextButtonPressed(_ sender: UIButton) {
+
+        guard let next = info?.nextPage() else {
+            return
+        }
+
+        if next != "" {
+            makeCharacterRequest(name: "", status: "", species: "", type: "", page: next)
         }
 
     }
@@ -49,7 +99,7 @@ extension CharacterListViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        performSegue(withIdentifier: "toCharacterDetailVC", sender: self)
     }
 }
 
