@@ -12,16 +12,23 @@ class CharacterListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var currentPageLabel: UILabel!
-    
+    @IBOutlet var paginationHeightContraint: NSLayoutConstraint!
+    @IBOutlet var paginationStackView: UIStackView!
+
     let networkManager = NetworkManager()
     var characters = [Character]() {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     }
     var info: Info? {
         didSet {
-            currentPageLabel.text = info?.currentPage()
+            DispatchQueue.main.async {
+                self.currentPageLabel.text = self.info?.currentPage()
+            }
         }
     }
 
@@ -29,8 +36,33 @@ class CharacterListViewController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.view.backgroundColor = .mainBackgroundColor
-        makeCharacterRequest(name: "", status: "", species: "", type: "", page: "")
+        makeCharacterRequest(name: "", page: "")
 
+        setUpSearchBar()
+
+    }
+
+    private func setUpSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+
+        let scb = searchController.searchBar
+        scb.tintColor = .rickAndMortyTitleBlue
+        scb.barTintColor = UIColor.white
+
+        if let textfield = scb.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.blue
+            if let backgroundview = textfield.subviews.first {
+
+                backgroundview.backgroundColor = UIColor.white
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,11 +76,15 @@ class CharacterListViewController: UIViewController {
         }
     }
 
-    func makeCharacterRequest(name: String, status: String, species: String, type: String, page: String) {
-        networkManager.getCharacter(name: name, status: status, species: species, type: type, page: page) { characters, info in
+    func makeCharacterRequest(name: String, page: String) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        networkManager.getCharacter(name: name, page: page) { characters, info in
             self.characters = characters
             self.info = info
         }
+//        networkManager.getCharactersWith(ids: "1,132") { characters in
+//            self.characters = characters
+//        }
     }
 
     @IBAction func previousButtonPressed(_ sender: UIButton) {
@@ -58,7 +94,7 @@ class CharacterListViewController: UIViewController {
         }
 
         if previous != "" {
-            makeCharacterRequest(name: "", status: "", species: "", type: "", page: previous)
+            makeCharacterRequest(name: "", page: previous)
         }
 
     }
@@ -70,7 +106,7 @@ class CharacterListViewController: UIViewController {
         }
 
         if next != "" {
-            makeCharacterRequest(name: "", status: "", species: "", type: "", page: next)
+            makeCharacterRequest(name: "", page: next)
         }
 
     }
@@ -103,3 +139,13 @@ extension CharacterListViewController: UITableViewDelegate {
     }
 }
 
+extension CharacterListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        makeCharacterRequest(name: text, page: "")
+        paginationHeightContraint.constant = text == "" ? 30.0 : 0.0
+        paginationStackView.isHidden = text == "" ? false : true
+    }
+}

@@ -16,6 +16,11 @@
 		7F325C1C20A4C5B700F5630F /* RickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C1B20A4C5B700F5630F /* RickView.swift */; };
 		7F325C1E20A4C86500F5630F /* RickImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C1D20A4C86500F5630F /* RickImageView.swift */; };
 		7F325C2020A4FEE700F5630F /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C1F20A4FEE700F5630F /* CharacterDetailViewController.swift */; };
+		7F325C2620A8728F00F5630F /* BaseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2520A8728F00F5630F /* BaseListViewController.swift */; };
+		7F325C2820A8756F00F5630F /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2720A8756F00F5630F /* EpisodeTableViewCell.swift */; };
+		7F325C2A20A8757A00F5630F /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2920A8757A00F5630F /* LocationTableViewCell.swift */; };
+		7F325C2C20A8D6B900F5630F /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2B20A8D6B900F5630F /* EpisodeDetailViewController.swift */; };
+		7F325C2E20A8E68600F5630F /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2D20A8E68600F5630F /* DetailTableViewCell.swift */; };
 		7F5877D7209F55AA0061A29B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877D6209F55AA0061A29B /* AppDelegate.swift */; };
 		7F5877D9209F55AA0061A29B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877D8209F55AA0061A29B /* CharacterListViewController.swift */; };
 		7F5877DB209F55AA0061A29B /* EpisodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877DA209F55AA0061A29B /* EpisodeListViewController.swift */; };
@@ -66,6 +71,11 @@
 		7F325C1B20A4C5B700F5630F /* RickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickView.swift; sourceTree = "<group>"; };
 		7F325C1D20A4C86500F5630F /* RickImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickImageView.swift; sourceTree = "<group>"; };
 		7F325C1F20A4FEE700F5630F /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		7F325C2520A8728F00F5630F /* BaseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListViewController.swift; sourceTree = "<group>"; };
+		7F325C2720A8756F00F5630F /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		7F325C2920A8757A00F5630F /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		7F325C2B20A8D6B900F5630F /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		7F325C2D20A8E68600F5630F /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		7F5877D3209F55AA0061A29B /* Everything Rick and Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Everything Rick and Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5877D6209F55AA0061A29B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5877D8209F55AA0061A29B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +221,8 @@
 				7F5877DA209F55AA0061A29B /* EpisodeListViewController.swift */,
 				7F587806209F58E00061A29B /* LocationListViewController.swift */,
 				7F325C1F20A4FEE700F5630F /* CharacterDetailViewController.swift */,
+				7F325C2520A8728F00F5630F /* BaseListViewController.swift */,
+				7F325C2B20A8D6B900F5630F /* EpisodeDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,6 +244,9 @@
 				7F58781320A05AED0061A29B /* CharacterTableViewCell.swift */,
 				7F325C1B20A4C5B700F5630F /* RickView.swift */,
 				7F325C1D20A4C86500F5630F /* RickImageView.swift */,
+				7F325C2720A8756F00F5630F /* EpisodeTableViewCell.swift */,
+				7F325C2920A8757A00F5630F /* LocationTableViewCell.swift */,
+				7F325C2D20A8E68600F5630F /* DetailTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -568,15 +583,20 @@
 			files = (
 				7F5877DB209F55AA0061A29B /* EpisodeListViewController.swift in Sources */,
 				7F325C1A20A36E5100F5630F /* ColorExtensions.swift in Sources */,
+				7F325C2620A8728F00F5630F /* BaseListViewController.swift in Sources */,
 				7F5877D7209F55AA0061A29B /* AppDelegate.swift in Sources */,
 				7F587812209F65D00061A29B /* Episode.swift in Sources */,
+				7F325C2C20A8D6B900F5630F /* EpisodeDetailViewController.swift in Sources */,
 				7F325C1E20A4C86500F5630F /* RickImageView.swift in Sources */,
 				7F325C2020A4FEE700F5630F /* CharacterDetailViewController.swift in Sources */,
 				7F58780E209F5C900061A29B /* Character.swift in Sources */,
+				7F325C2E20A8E68600F5630F /* DetailTableViewCell.swift in Sources */,
 				7F587807209F58E00061A29B /* LocationListViewController.swift in Sources */,
+				7F325C2820A8756F00F5630F /* EpisodeTableViewCell.swift in Sources */,
 				7F587810209F64EA0061A29B /* Location.swift in Sources */,
 				7F5877D9209F55AA0061A29B /* CharacterListViewController.swift in Sources */,
 				7EB4549C4D7F6C36C9B77CE5 /* Info.swift in Sources */,
+				7F325C2A20A8757A00F5630F /* LocationTableViewCell.swift in Sources */,
 				7EB451C18F01497E2ADB3F36 /* RickAndMortyAPI.swift in Sources */,
 				7EB455B3889191878E996AF2 /* Networkable.swift in Sources */,
 				7EB45B13848C292D48F1A6E3 /* NetworkManager.swift in Sources */,
