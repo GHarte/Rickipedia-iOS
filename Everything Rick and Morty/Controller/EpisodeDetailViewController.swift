@@ -35,7 +35,9 @@ class EpisodeDetailViewController: UIViewController {
     func makeCharactersRequest() {
         if let characterIds = episode?.characterIds() {
             networkManager.getCharactersWith(ids: characterIds) { characters in
-                self.characters = characters
+                if let characters = characters {
+                    self.characters = characters
+                }
             }
         }
     }

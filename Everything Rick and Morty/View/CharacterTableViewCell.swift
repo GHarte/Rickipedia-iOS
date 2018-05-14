@@ -13,7 +13,7 @@ class CharacterTableViewCell: UITableViewCell {
     
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var speciesLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +22,7 @@ class CharacterTableViewCell: UITableViewCell {
 
     func setUpWith(characterModel character: Character) {
         nameLabel.text = character.name
-        statusLabel.text = character.status
+        speciesLabel.text = character.species
         avatarImageView.sd_setImage(with: URL(string: character.image), completed: nil)
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 class LocationListViewController: BaseListViewController {
 
@@ -22,14 +23,20 @@ class LocationListViewController: BaseListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
         makeLocationRequest(name: "", page: "")
     }
 
     func makeLocationRequest(name: String, page: String) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         networkManager.getLocation(name: name, page: page) { locations, info in
-            self.locations = locations
-            self.info = info
+            if let locations = locations {
+                self.locations = locations
+            }
+            if let info = info {
+                self.info = info
+            }
+            self.refreshControl.endRefreshing()
         }
     }
 
@@ -40,13 +47,26 @@ class LocationListViewController: BaseListViewController {
         }
         makeLocationRequest(name:text, page: "")
     }
-    
+
+    override func handleRefresh(refreshControl: UIRefreshControl) {
+        super.handleRefresh(refreshControl: refreshControl)
+        if let page = info?.currentPage() {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
+            makeLocationRequest(name: "", page: page)
+        }
+        else {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
+            makeLocationRequest(name: "", page: "")
+        }
+    }
+
     @IBAction func previousButtonPressed(_ sender: UIButton) {
         guard let previous = info?.previousPage() else {
             return
         }
         
         if previous != "" {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
             makeLocationRequest(name: "", page: previous)
         }
     }
@@ -57,10 +77,10 @@ class LocationListViewController: BaseListViewController {
         }
         
         if next != "" {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
             makeLocationRequest(name: "", page: next)
         }
     }
-    
     
 }
 

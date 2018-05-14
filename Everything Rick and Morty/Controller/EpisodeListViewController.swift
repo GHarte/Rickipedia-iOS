@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 class EpisodeListViewController: BaseListViewController {
     
@@ -22,14 +23,20 @@ class EpisodeListViewController: BaseListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
         makeEpisodeRequest(name: "", page: "")
     }
 
     func makeEpisodeRequest(name: String, page: String) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         networkManager.getEpisode(name: name, page: page) { episodes, info in
-            self.episodes = episodes
-            self.info = info
+            if let episodes = episodes {
+                self.episodes = episodes
+            }
+            if let info = info {
+                self.info = info
+            }
+            self.refreshControl.endRefreshing()
         }
     }
 
@@ -51,6 +58,17 @@ class EpisodeListViewController: BaseListViewController {
         }
         makeEpisodeRequest(name:text, page: "")
     }
+
+    override func handleRefresh(refreshControl: UIRefreshControl) {
+        super.handleRefresh(refreshControl: refreshControl)
+        if let page = info?.currentPage() {
+            makeEpisodeRequest(name: "", page: page)
+        }
+        else {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
+            makeEpisodeRequest(name: "", page: "")
+        }
+    }
     
     @IBAction func previousButtonPressed(_ sender: UIButton) {
         guard let previous = info?.previousPage() else {
@@ -58,6 +76,7 @@ class EpisodeListViewController: BaseListViewController {
         }
         
         if previous != "" {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
             makeEpisodeRequest(name: "", page: previous)
         }
     }
@@ -67,6 +86,7 @@ class EpisodeListViewController: BaseListViewController {
         }
         
         if next != "" {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
             makeEpisodeRequest(name: "", page: next)
         }
     }

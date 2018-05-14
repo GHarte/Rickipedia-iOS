@@ -7,13 +7,9 @@
 //
 
 import UIKit
+import KRProgressHUD
 
-class CharacterListViewController: UIViewController {
-
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var currentPageLabel: UILabel!
-    @IBOutlet var paginationHeightContraint: NSLayoutConstraint!
-    @IBOutlet var paginationStackView: UIStackView!
+class CharacterListViewController: BaseListViewController {
 
     let networkManager = NetworkManager()
     var characters = [Character]() {
@@ -24,45 +20,13 @@ class CharacterListViewController: UIViewController {
             }
         }
     }
-    var info: Info? {
-        didSet {
-            DispatchQueue.main.async {
-                self.currentPageLabel.text = self.info?.currentPage()
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.view.backgroundColor = .mainBackgroundColor
+        KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
         makeCharacterRequest(name: "", page: "")
 
-        setUpSearchBar()
-
-    }
-
-    private func setUpSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-
-        let scb = searchController.searchBar
-        scb.tintColor = .rickAndMortyTitleBlue
-        scb.barTintColor = UIColor.white
-
-        if let textfield = scb.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.blue
-            if let backgroundview = textfield.subviews.first {
-
-                backgroundview.backgroundColor = UIColor.white
-                backgroundview.layer.cornerRadius = 10;
-                backgroundview.clipsToBounds = true;
-
-            }
-        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,12 +43,34 @@ class CharacterListViewController: UIViewController {
     func makeCharacterRequest(name: String, page: String) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         networkManager.getCharacter(name: name, page: page) { characters, info in
-            self.characters = characters
-            self.info = info
+            if let characters = characters {
+                self.characters = characters
+            }
+            if let info = info {
+                self.info = info
+            }
+            self.refreshControl.endRefreshing()
         }
-//        networkManager.getCharactersWith(ids: "1,132") { characters in
-//            self.characters = characters
-//        }
+    }
+
+    override func updateSearchResults(for searchController: UISearchController) {
+        super.updateSearchResults(for: searchController)
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        makeCharacterRequest(name:text, page: "")
+    }
+
+    override func handleRefresh(refreshControl: UIRefreshControl) {
+        super.handleRefresh(refreshControl: refreshControl)
+        if let page = info?.currentPage() {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
+            makeCharacterRequest(name: "", page: page)
+        }
+        else {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
+            makeCharacterRequest(name: "", page: "")
+        }
     }
 
     @IBAction func previousButtonPressed(_ sender: UIButton) {
@@ -94,6 +80,7 @@ class CharacterListViewController: UIViewController {
         }
 
         if previous != "" {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading)
             makeCharacterRequest(name: "", page: previous)
         }
 
@@ -106,6 +93,7 @@ class CharacterListViewController: UIViewController {
         }
 
         if next != "" {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading)
             makeCharacterRequest(name: "", page: next)
         }
 
@@ -136,16 +124,5 @@ extension CharacterListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toCharacterDetailVC", sender: self)
-    }
-}
-
-extension CharacterListViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
-            return
-        }
-        makeCharacterRequest(name: text, page: "")
-        paginationHeightContraint.constant = text == "" ? 30.0 : 0.0
-        paginationStackView.isHidden = text == "" ? false : true
     }
 }

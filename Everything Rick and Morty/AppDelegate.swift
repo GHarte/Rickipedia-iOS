@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor.mainColor
         UINavigationBar.appearance().barTintColor = UIColor.mainColor
         UITabBar.appearance().isTranslucent = false
+        KRProgressHUD.appearance().style = .black
         
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.font : UIFont(name: "Get Schwifty", size: 34.0)!, NSAttributedStringKey.foregroundColor: UIColor.rickAndMortyTitleBlue]
     }

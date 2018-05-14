@@ -6,6 +6,7 @@ target 'Everything Rick and Morty' do
   use_frameworks!
   pod 'Moya', '~> 11.0'
   pod 'SDWebImage', '~> 4.0'
+  pod 'KRProgressHUD'
 
   # Pods for Everything Rick and Morty
 

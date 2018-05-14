@@ -23,6 +23,12 @@ class BaseListViewController: UIViewController {
         }
     }
 
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.view.backgroundColor = .mainBackgroundColor
@@ -30,6 +36,7 @@ class BaseListViewController: UIViewController {
         configureSearchBar()
         tableView.separatorStyle = .none
         tableView.backgroundColor = .mainBackgroundColor
+        tableView.addSubview(self.refreshControl)
     }
 
     private func configureSearchBar() {
@@ -53,6 +60,9 @@ class BaseListViewController: UIViewController {
         }
     }
 
+    @objc func handleRefresh(refreshControl: UIRefreshControl) {
+
+    }
 }
 
 extension BaseListViewController: UISearchResultsUpdating {
