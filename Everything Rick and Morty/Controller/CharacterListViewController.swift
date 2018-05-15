@@ -58,7 +58,9 @@ class CharacterListViewController: BaseListViewController {
         guard let text = searchController.searchBar.text else {
             return
         }
-        makeCharacterRequest(name:text, page: "")
+        if let page = info?.currentPage() {
+            makeCharacterRequest(name:text, page: page)
+        }
     }
 
     override func handleRefresh(refreshControl: UIRefreshControl) {

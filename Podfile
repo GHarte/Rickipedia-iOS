@@ -7,6 +7,7 @@ target 'Everything Rick and Morty' do
   pod 'Moya', '~> 11.0'
   pod 'SDWebImage', '~> 4.0'
   pod 'KRProgressHUD'
+  pod 'AcknowList'
 
   # Pods for Everything Rick and Morty
 

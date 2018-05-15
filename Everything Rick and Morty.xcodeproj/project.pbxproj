@@ -22,6 +22,7 @@
 		7F325C2C20A8D6B900F5630F /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2B20A8D6B900F5630F /* EpisodeDetailViewController.swift */; };
 		7F325C2E20A8E68600F5630F /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2D20A8E68600F5630F /* DetailTableViewCell.swift */; };
 		7F325C3020AA31AB00F5630F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F325C2F20AA31AB00F5630F /* AboutViewController.swift */; };
+		7F325C3C20AB638A00F5630F /* Pods-Everything Rick and Morty-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F325C3B20AB638900F5630F /* Pods-Everything Rick and Morty-acknowledgements.plist */; };
 		7F5877D7209F55AA0061A29B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877D6209F55AA0061A29B /* AppDelegate.swift */; };
 		7F5877D9209F55AA0061A29B /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877D8209F55AA0061A29B /* CharacterListViewController.swift */; };
 		7F5877DB209F55AA0061A29B /* EpisodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5877DA209F55AA0061A29B /* EpisodeListViewController.swift */; };
@@ -78,6 +79,7 @@
 		7F325C2B20A8D6B900F5630F /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		7F325C2D20A8E68600F5630F /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		7F325C2F20AA31AB00F5630F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		7F325C3B20AB638900F5630F /* Pods-Everything Rick and Morty-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-Everything Rick and Morty-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-Everything Rick and Morty/Pods-Everything Rick and Morty-acknowledgements.plist"; sourceTree = "<group>"; };
 		7F5877D3209F55AA0061A29B /* Everything Rick and Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Everything Rick and Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F5877D6209F55AA0061A29B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F5877D8209F55AA0061A29B /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		7F5877CA209F55AA0061A29B = {
 			isa = PBXGroup;
 			children = (
+				7F325C3B20AB638900F5630F /* Pods-Everything Rick and Morty-acknowledgements.plist */,
 				7F5877D5209F55AA0061A29B /* Everything Rick and Morty */,
 				7F5877EC209F55AA0061A29B /* Everything Rick and MortyTests */,
 				7F5877F7209F55AA0061A29B /* Everything Rick and MortyUITests */,
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F325C1620A23DC100F5630F /* Get Schwifty.ttf in Resources */,
+				7F325C3C20AB638A00F5630F /* Pods-Everything Rick and Morty-acknowledgements.plist in Resources */,
 				7F5877E3209F55AA0061A29B /* LaunchScreen.storyboard in Resources */,
 				7F5877E0209F55AA0061A29B /* Assets.xcassets in Resources */,
 				7F5877DE209F55AA0061A29B /* Main.storyboard in Resources */,
@@ -426,6 +430,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Everything Rick and Morty/Pods-Everything Rick and Morty-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/KRProgressHUD/KRProgressHUD.framework",
@@ -435,6 +440,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AcknowList.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRProgressHUD.framework",

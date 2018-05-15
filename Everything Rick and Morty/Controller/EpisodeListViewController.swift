@@ -56,12 +56,15 @@ class EpisodeListViewController: BaseListViewController {
         guard let text = searchController.searchBar.text else {
             return
         }
-        makeEpisodeRequest(name:text, page: "")
+        if let page = info?.currentPage() {
+            makeEpisodeRequest(name: text, page: page)
+        }
     }
 
     override func handleRefresh(refreshControl: UIRefreshControl) {
         super.handleRefresh(refreshControl: refreshControl)
         if let page = info?.currentPage() {
+            KRProgressHUD.show(withMessage: NetworkStrings.loading, completion: nil)
             makeEpisodeRequest(name: "", page: page)
         }
         else {

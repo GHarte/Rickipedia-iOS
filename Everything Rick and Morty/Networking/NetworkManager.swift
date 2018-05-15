@@ -32,8 +32,8 @@ struct NetworkManager: Networkable {
                 }
                 catch let error {
                     print(error.localizedDescription)
-                    completion(nil, nil)
-                    KRProgressHUD.showError(withMessage: NetworkStrings.genericErrorMessage)
+                    completion([Character](), nil)
+                    KRProgressHUD.dismiss()
                 }
             case let .failure(error):
 
@@ -87,7 +87,6 @@ struct NetworkManager: Networkable {
                      page: String,
                      completion: @escaping ([Location]?, Info?) -> Void) {
 
-        KRProgressHUD.show(withMessage: NetworkStrings.loading)
         provider.request(.location(name: name, page: page), completion: { result in
             switch result {
             case let .success(response):
@@ -98,8 +97,8 @@ struct NetworkManager: Networkable {
                 }
                 catch let error {
                     print(error.localizedDescription)
-                    completion(nil, nil)
-                    KRProgressHUD.showError(withMessage: NetworkStrings.genericErrorMessage)
+                    completion([Location](), nil)
+                    KRProgressHUD.dismiss()
                 }
             case let .failure(error):
 
@@ -122,7 +121,6 @@ struct NetworkManager: Networkable {
                     page: String,
                     completion: @escaping ([Episode]?, Info?) -> Void) {
 
-        KRProgressHUD.show(withMessage: NetworkStrings.loading)
         provider.request(.episode(name: name, page: page), completion: { result in
             switch result {
             case let .success(response):
@@ -133,8 +131,8 @@ struct NetworkManager: Networkable {
                 }
                 catch let error {
                     print(error.localizedDescription)
-                    completion(nil, nil)
-                    KRProgressHUD.showError(withMessage: NetworkStrings.genericErrorMessage)
+                    completion([Episode](), nil)
+                    KRProgressHUD.dismiss()
                 }
             case let .failure(error):
 

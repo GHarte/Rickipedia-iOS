@@ -45,7 +45,9 @@ class LocationListViewController: BaseListViewController {
         guard let text = searchController.searchBar.text else {
             return
         }
-        makeLocationRequest(name:text, page: "")
+        if let page = info?.currentPage() {
+            makeLocationRequest(name: text, page: page)
+        }
     }
 
     override func handleRefresh(refreshControl: UIRefreshControl) {

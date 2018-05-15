@@ -57,27 +57,52 @@ extension EpisodeDetailViewController: UITableViewDelegate {
 }
 
 extension EpisodeDetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") as? DetailTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell") else {
             return UITableViewCell()
         }
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
-            cell.detailTypeLabel.text = "Air Date:"
-            cell.detailInfoLabel.text = episode?.airDate
+            cell.textLabel?.text = episode?.airDate
         case 1:
-            cell.detailTypeLabel.text = "Episode:"
-            cell.detailInfoLabel.text = episode?.episode
+            cell.textLabel?.text = episode?.episode
         case 2:
-            cell.detailTypeLabel.text = "Characters:"
-            cell.detailInfoLabel.text = characterNamesAsString()
+            cell.textLabel?.text = characterNamesAsString()
         default:
             return UITableViewCell()
         }
+        cell.contentView.backgroundColor = .mainColor
+        cell.textLabel?.backgroundColor = .mainColor
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 20))
+        let label = UILabel(frame: CGRect(x: 20, y:(view.frame.size.height / 2) - 4.5, width: tableView.frame.size.width, height: 20))
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textColor = .rickAndMortyTitleBlue
+        view.addSubview(label)
+        view.backgroundColor = .mainBackgroundColor
+
+        switch section {
+        case 0:
+            label.text = "Air Date"
+        case 1:
+            label.text = "Episode"
+        case 2:
+            label.text = "Characters"
+        default:
+            break
+        }
+
+        return view
     }
 }

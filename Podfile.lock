@@ -1,4 +1,5 @@
 PODS:
+  - AcknowList (1.6)
   - Alamofire (4.7.0)
   - KRActivityIndicatorView (2.1.2)
   - KRProgressHUD (3.2.2):
@@ -14,12 +15,14 @@ PODS:
   - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
+  - AcknowList
   - KRProgressHUD
   - Moya (~> 11.0)
   - SDWebImage (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AcknowList
     - Alamofire
     - KRActivityIndicatorView
     - KRProgressHUD
@@ -28,6 +31,7 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
+  AcknowList: 2b27ccc75110be58be37424c4b08b07bdec628b4
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   KRActivityIndicatorView: 27e7a7e3da7fbc8e5405fbc4088b51cc2095a410
   KRProgressHUD: 8872da74b1c462e15c82a8fff250a2d34ee82ea2
@@ -35,6 +39,6 @@ SPEC CHECKSUMS:
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: b9e1851f3f2e6ae7c61f426a300208fd417d7e47
+PODFILE CHECKSUM: 8c9a696592567d4f1f91a073d8003ea9894bd77e
 
 COCOAPODS: 1.5.2
